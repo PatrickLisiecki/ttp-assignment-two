@@ -150,7 +150,29 @@ function myLastIndexOf(inputArr, target) {
 console.log(myLastIndexOf(arr, 10));
 
 // Function 11: Object.keys()
-function grabKeys(inputObject) {}
+function grabKeys(inputObject) {
+    var keysArr = []
+
+    for (const key in inputObject ) {
+        myPush(keysArr, key)
+    }
+
+    return keysArr
+}
+
+const object = { a: 1, b: 2, c: 3 };
+
+console.log(grabKeys(object))
 
 // Function 12: Object.values()
-function grabValues(inputObject) {}
+function grabValues(inputObject) {
+    var valuesArr = []
+
+    for (const key in inputObject ) {
+        myPush(valuesArr, inputObject[key])
+    }
+
+    return valuesArr
+}
+
+console.log(grabValues(object))
