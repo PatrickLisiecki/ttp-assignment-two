@@ -1,15 +1,15 @@
-// Input array for testing functions
+// Input arrays for testing functions
 var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var evenArr = [2, 4, 6, 8, 10];
 
 // Function 1: forEach()
 function myEach(inputArr, callbackFunc) {
     for (let i = 0; i < inputArr.length; i++) {
-        callbackFunc(inputArr[i]);
+        callbackFunc(inputArr[i], i, inputArr);
     }
 }
 
-function printElement(element) {
+function printElement(element, index, array) {
     console.log(element);
 }
 
@@ -20,13 +20,13 @@ function myMap(inputArr, callbackFunc) {
     let newArr = [];
 
     for (let i = 0; i < inputArr.length; i++) {
-        newArr.push(callbackFunc(inputArr[i]));
+        newArr.push(callbackFunc(inputArr[i], i, inputArr));
     }
 
     return newArr;
 }
 
-function double(element) {
+function double(element, index, array) {
     return element * 2;
 }
 
@@ -39,7 +39,7 @@ function myFilter(inputArr, callbackFunc) {
     var newArr = [];
 
     for (let i = 0; i < inputArr.length; i++) {
-        if (callbackFunc(inputArr[i])) {
+        if (callbackFunc(inputArr[i], i, inputArr)) {
             newArr.push(inputArr[i]);
         }
     }
@@ -47,7 +47,7 @@ function myFilter(inputArr, callbackFunc) {
     return newArr;
 }
 
-function checkNum(element) {
+function checkNum(element, index, array) {
     if (element < 6) {
         return true;
     } else {
@@ -61,7 +61,7 @@ console.log(filterArr);
 // Function 4: some()
 function mySome(inputArr, callbackFunc) {
     for (let i = 0; i < inputArr.length; i++) {
-        if (callbackFunc(inputArr[i]) === true) {
+        if (callbackFunc(inputArr[i], i, inputArr) === true) {
             return true;
         }
     }
@@ -69,7 +69,7 @@ function mySome(inputArr, callbackFunc) {
     return false;
 }
 
-function isEven(element) {
+function isEven(element, index, array) {
     return element % 2 == 0;
 }
 
@@ -78,7 +78,7 @@ console.log(mySome(arr, isEven));
 // Function 5: every()
 function myEvery(inputArr, callbackFunc) {
     for (let i = 0; i < inputArr.length; i++) {
-        if (callbackFunc(inputArr[i]) === false) {
+        if (callbackFunc(inputArr[i], i, inputArr) === false) {
             return false;
         }
     }
@@ -151,28 +151,28 @@ console.log(myLastIndexOf(arr, 10));
 
 // Function 11: Object.keys()
 function grabKeys(inputObject) {
-    var keysArr = []
+    var keysArr = [];
 
-    for (const key in inputObject ) {
-        myPush(keysArr, key)
+    for (const key in inputObject) {
+        myPush(keysArr, key);
     }
 
-    return keysArr
+    return keysArr;
 }
 
 const object = { a: 1, b: 2, c: 3 };
 
-console.log(grabKeys(object))
+console.log(grabKeys(object));
 
 // Function 12: Object.values()
 function grabValues(inputObject) {
-    var valuesArr = []
+    var valuesArr = [];
 
-    for (const key in inputObject ) {
-        myPush(valuesArr, inputObject[key])
+    for (const key in inputObject) {
+        myPush(valuesArr, inputObject[key]);
     }
 
-    return valuesArr
+    return valuesArr;
 }
 
-console.log(grabValues(object))
+console.log(grabValues(object));
