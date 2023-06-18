@@ -4,13 +4,33 @@
     The first time that the callback is run there is no "return value of the previous calculation". If supplied, an initial value may be used in its place. Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
 */
 
-function myReduce(inputArr, callbackFunc, initialValue) {
-    if (initialValue == false) {
-        initialValue = inputArr[0];
-        for (let i = 1; i < inputArr.length; i++) {
-            callbackFunc;
-        }
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+function myReduce(callbackFunc, inputArr, initialValue) {
+    let startIndex = 0;
+    let accumulator = 0;
+
+    // If an initial value was not provided use the first element in the array
+    if (typeof initialValue == "undefined") {
+        accumulator = inputArr[0];
+        startIndex = 1;
+    } else {
+        accumulator = initialValue;
     }
 
-    return true;
+    for (let i = startIndex; i < inputArr.length; i++) {
+        accumulator = callbackFunc(accumulator, inputArr[i], i, inputArr);
+    }
+
+    return accumulator;
 }
+
+function addNums(a, b) {
+    return a + b;
+}
+
+const sumWithoutInitial = myReduce(addNums, arr);
+const sumWithInitial = myReduce(addNums, arr, 1);
+
+console.log(sumWithoutInitial);
+console.log(sumWithInitial);
