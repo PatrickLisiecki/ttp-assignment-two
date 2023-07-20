@@ -1,4 +1,9 @@
 # TTP Assignment 2
+
+Assignment for the Tech Talent Pipeline Summer 2023 Bootcamp
+
+## Description
+
 The following (12) are some of the most popular and used methods in functional languages:
 
 - forEach
